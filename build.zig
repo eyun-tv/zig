@@ -1,5 +1,6 @@
 const std = @import("std");
 const deps = @import("./deps.zig");
+const print = @import("std").debug.print;
 
 pub fn build(b: *std.build.Builder) void {
     // Standard target options allows the person running `zig build` to choose
@@ -17,7 +18,10 @@ pub fn build(b: *std.build.Builder) void {
     exe.setBuildMode(mode);
     deps.addAllTo(exe);
     exe.install();
-    exe.strip = true;
+
+    if (mode != .Debug) {
+        exe.strip = true;
+    }
 
     const run_cmd = exe.run();
     run_cmd.step.dependOn(b.getInstallStep());

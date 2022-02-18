@@ -1,16 +1,22 @@
 const std = @import("std");
-const stdout = std.io.getStdOut().writer();
+const print = @import("std").debug.print;
 
 const network = @import("network");
-const socket = network.Socket.create("0.0.0.0", 0);
 
 pub fn main() anyerror!void {
     try network.init();
     defer network.deinit();
 
-    socket.listen();
+    const sk = try network.Socket.create(.ipv4, .udp);
+    defer sk.close();
 
-    try stdout.print("Hello, {s}!\n", .{"world"});
+    try sk.bindToPort(0);
+    //try sk.listen();
+
+    //v4.bindToPort(0);
+    //socket.listen();
+
+    print("Hello, {s}!\n", .{"world"});
 }
 
 // test "basic test" {
