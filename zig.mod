@@ -4,4 +4,4 @@ license: AGPL-3.0-or-later
 description: the next web
 root_dependencies:
 
-  - src: git https://github.com/MasterQ32/zig-network
+  - src: git git@github.com:MasterQ32/zig-network.git
