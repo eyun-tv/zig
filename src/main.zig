@@ -7,15 +7,11 @@ pub fn main() anyerror!void {
     try network.init();
     defer network.deinit();
 
-    const sk = try network.Socket.create(.ipv4, .udp);
+    var sk = try network.Socket.create(.ipv4, .tcp);
+    //var sk = try network.Socket.create(.ipv4, .udp);
     defer sk.close();
 
     try sk.bindToPort(0);
     try sk.listen();
-
-    print("Hello, {s}!\n", .{"world"});
+    print("listen on {}", .{sk.getLocalEndPoint()});
 }
-
-// test "basic test" {
-//    try std.testing.expectEqual(10, 3 + 7);
-// }
