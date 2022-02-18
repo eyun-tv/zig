@@ -1,0 +1,6 @@
+[submodule "lib/CRoaringUnityBuild"]
+	path = lib/roaringbitmap
+	url = git@github.com:lemire/CRoaringUnityBuild.git
+[submodule "lib/net"]
+	path = lib/net
+	url = git@github.com:MasterQ32/zig-network.git
