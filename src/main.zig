@@ -11,10 +11,7 @@ pub fn main() anyerror!void {
     defer sk.close();
 
     try sk.bindToPort(0);
-    //try sk.listen();
-
-    //v4.bindToPort(0);
-    //socket.listen();
+    try sk.listen();
 
     print("Hello, {s}!\n", .{"world"});
 }
