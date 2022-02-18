@@ -4,10 +4,9 @@ DIR=$(dirname $(realpath "$0"))
 cd $DIR
 
 
-if ! [ -x "$(command -v reflex)" ]; then
-go install github.com/cespare/reflex@latest
+if ! [ -x "$(command -v watchexec)" ]; then
+cargo install watchexec-cli
 fi
 
-./run.sh
+watchexec ./run.sh
 
-reflex -r '\.zig$' ./run.sh
